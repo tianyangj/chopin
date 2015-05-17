@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name chopinApp.controller:MainCtrl
+ * @name lilybook.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the chopinApp
+ * Controller of the lilybook
  */
-angular.module('chopinApp')
+angular.module('lilybook')
   .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

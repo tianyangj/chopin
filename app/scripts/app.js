@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name chopinApp
+ * @name lilybook
  * @description
- * # chopinApp
+ * # lilybook
  *
  * Main module of the application.
  */
 angular
-  .module('chopinApp', [
+  .module('lilybook', [
     'ngAnimate',
     'ngRoute',
     'ngTouch'
