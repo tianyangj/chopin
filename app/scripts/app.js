@@ -12,7 +12,8 @@ angular
   .module('lilybook', [
     'ngAnimate',
     'ngRoute',
-    'ngTouch'
+    'ngTouch',
+    'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
