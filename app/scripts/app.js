@@ -28,7 +28,8 @@ angular
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
       })
       .when('/signup', {
         templateUrl: 'views/signup.html',

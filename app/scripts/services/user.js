@@ -8,7 +8,7 @@ angular.module('lilybook').factory('userSvc', function ($q) {
 
   var createUser = function (user) {
     var defer = $q.defer();
-    ref.set(user, function (error) {
+    ref.child(user.uid).set(user, function (error) {
       if (error) {
         defer.reject(error);
       } else {
