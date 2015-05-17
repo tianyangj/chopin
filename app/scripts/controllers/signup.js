@@ -1,17 +1,24 @@
 'use strict';
 
-angular.module('lilybook').controller('SignupCtrl', function ($scope, $firebaseAuth) {
-  
-  var authSvc = $firebaseAuth(new Firebase('https://chopin.firebaseio.com/users'));
-  
-  $scope.form = {};
-  $scope.signup = function () {
-    console.log($scope.form)
+angular.module('lilybook').controller('SignupCtrl', function (authSvc, userSvc) {
+
+  this.submit = function () {
     authSvc.$createUser({
-      email: $scope.form.email,
-      password: $scope.form.password
-    }).then(function(user){
-      console.log(user);
-    })
+      email: this.email,
+      password: this.password
+    }).then(angular.bind(this, function (data) {
+      var user = {};
+      user[data.uid] = {
+        email: this.email,
+        firstname: this.firstname,
+        lastname: this.lastname
+      };
+      userSvc.createUser(user).then(function () {
+        console.log('suc', arguments)
+      });
+    })).catch(angular.bind(this, function (error) {
+      this.error = error;
+    }));
   };
+
 });

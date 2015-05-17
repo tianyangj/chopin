@@ -32,7 +32,8 @@ angular
       })
       .when('/signup', {
         templateUrl: 'views/signup.html',
-        controller: 'SignupCtrl'
+        controller: 'SignupCtrl',
+        controllerAs: 'signup'
       })
       .otherwise({
         redirectTo: '/'

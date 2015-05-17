@@ -2,6 +2,6 @@
 
 'use strict';
 
-angular.module('lilybook').controller('HeaderCtrl', function ($scope) {
+angular.module('lilybook').controller('HeaderCtrl', function () {
 
 });
