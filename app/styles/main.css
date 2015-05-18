@@ -2,6 +2,11 @@
 	min-height: 600px;	
 }
 
+.navbar {
+	margin: 0;
+	border-radius: 0;
+}
+
 .signup-container {
 	max-width: 400px;
 	margin: 0 auto;
@@ -12,11 +17,6 @@
 	margin: 0 auto;
 }
 
-#myCarousel {
+.splash-container .carousel .item {
 	height: 500px;
-}
-
-#myCarousel .item {
-	height: 500px;
-	background-color: #777;
 }
