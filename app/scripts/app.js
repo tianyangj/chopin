@@ -19,8 +19,9 @@ angular
     $locationProvider.html5Mode(true).hashPrefix('!');
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/splash.html',
+        controller: 'SplashCtrl',
+        controllerAs: 'splash'
       })
       .when('/about', {
         templateUrl: 'views/about.html',

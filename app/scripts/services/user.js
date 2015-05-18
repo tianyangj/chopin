@@ -18,8 +18,19 @@ angular.module('lilybook').factory('userSvc', function ($q) {
     return defer.promise;
   };
 
+  var getUser = function (uid) {
+    var defer = $q.defer();
+    ref.child(uid).on('value', function (snapshot) {
+      defer.resolve(snapshot.val());
+    }, function (error) {
+        defer.reject(error);
+      });
+    return defer.promise;
+  };
+
   return {
-    createUser: createUser
+    createUser: createUser,
+    getUser: getUser
   };
 
 });

@@ -1,4 +1,4 @@
-<header class="header" ng-controller="HeaderCtrl">
+<header class="header" ng-controller="HeaderCtrl as header">
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
@@ -30,26 +30,23 @@
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="/login">Login</a>
+						<a href="/login" ng-if="!main.account">Login</a>
 					</li>
 					<li>
-						<a href="/signup">Signup</a>
+						<a href="/signup" ng-if="!main.account">Signup</a>
 					</li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+					<li class="dropdown" ng-if="main.account">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{main.user.firstname}} <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li>
-								<a href="#">Action</a>
+								<a href="/account">Account</a>
 							</li>
 							<li>
-								<a href="#">Another action</a>
-							</li>
-							<li>
-								<a href="#">Something else here</a>
+								<a href="/settings">Settings</a>
 							</li>
 							<li class="divider"></li>
 							<li>
-								<a href="#">Separated link</a>
+								<a href="" ng-click="header.logout()">Logout</a>
 							</li>
 						</ul>
 					</li>

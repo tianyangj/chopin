@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" ng-app="lilybook">
   
   <head>
     <meta charset="utf-8">
@@ -18,7 +18,7 @@
     <!-- endbuild -->
   </head>
   
-  <body ng-app="lilybook">
+  <body ng-controller="MainCtrl as main">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an
         <strong>outdated</strong>browser. Please
@@ -64,6 +64,7 @@
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/signup.js"></script>
+    <script src="scripts/controllers/splash.js"></script>
     <script src="scripts/services/auth.js"></script>
     <script src="scripts/services/user.js"></script>
     <!-- endbuild -->
