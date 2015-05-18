@@ -37,6 +37,16 @@ angular
         controller: 'SignupCtrl',
         controllerAs: 'signup'
       })
+      .when('/home', {
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl',
+        controllerAs: 'home',
+        resolve: {
+          auth: ['authSvc', function(authSvc) {
+            return authSvc.$requireAuth();
+          }]
+        }
+      })
       .otherwise({
         redirectTo: '/'
       });
