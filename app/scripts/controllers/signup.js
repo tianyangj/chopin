@@ -2,22 +2,27 @@
 
 angular.module('lilybook').controller('SignupCtrl', function (authSvc, userSvc) {
 
-  this.submit = function () {
+  var that = this;
+
+  that.submit = function () {
     authSvc.$createUser({
-      email: this.email,
-      password: this.password
-    }).then(angular.bind(this, function (user) {
+      email: that.email,
+      password: that.password
+    }).then(function (user) {
       userSvc.createUser({
         uid: user.uid,
-        email: this.email,
-        firstname: this.firstname,
-        lastname: this.lastname
+        email: that.email,
+        firstname: that.firstname,
+        lastname: that.lastname
       }).then(function () {
-        console.log('suc', arguments);
+        authSvc.$authWithPassword({
+          email: that.email,
+          password: that.password
+        });
       });
-    })).catch(angular.bind(this, function (error) {
-      this.error = error;
-    }));
+    }).catch(function (error) {
+      that.error = error;
+    });
   };
 
 });
