@@ -26,15 +26,8 @@
     <![endif]-->
     <!-- Add your site or application content here -->
     <ng-include src="'views/partials/header.html'"></ng-include>
-    <div class="container">
-      <div ng-view=""></div>
-    </div>
-    <div class="footer">
-      <div class="container">
-        <p>
-          <span class="glyphicon glyphicon-heart"></span>from the Yeoman team</p>
-      </div>
-    </div>
+    <div class="main-view" ng-view></div>
+    <ng-include src="'views/partials/footer.html'"></ng-include>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){

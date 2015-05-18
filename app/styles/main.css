@@ -1,3 +1,7 @@
+.main-view {
+	min-height: 600px;	
+}
+
 .signup-container {
 	max-width: 400px;
 	margin: 0 auto;
@@ -6,4 +10,13 @@
 .login-container {
 	max-width: 400px;
 	margin: 0 auto;
+}
+
+#myCarousel {
+	height: 500px;
+}
+
+#myCarousel .item {
+	height: 500px;
+	background-color: #777;
 }
