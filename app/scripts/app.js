@@ -49,6 +49,16 @@ angular
           }]
         }
       })
+      .when('/composers', {
+        templateUrl: 'views/composers.html',
+        controller: 'ComposersCtrl',
+        controllerAs: 'composers',
+        resolve: {
+          auth: ['authSvc', function(authSvc) {
+            return authSvc.$requireAuth();
+          }]
+        }
+      })
       .otherwise({
         redirectTo: '/'
       });
