@@ -28,9 +28,22 @@ angular.module('lilybook').factory('composerSvc', function ($q) {
     return defer.promise;
   };
 
+  var getComposers = function (skip, limit) {
+    skip = skip || 0;
+    limit = limit || 10;
+    var defer = $q.defer();
+    ref.on('value', function (snapshot) {
+      defer.resolve(snapshot.val());
+    }, function (error) {
+        defer.reject(error);
+      });
+    return defer.promise;
+  };
+
   return {
     createComposer: createComposer,
-    getComposer: getComposer
+    getComposer: getComposer,
+    getComposers: getComposers
   };
 
 });

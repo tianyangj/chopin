@@ -6,6 +6,10 @@
 		</h1>
 	</div>
 	<div>
-		list here...
+		<ul>
+			<li ng-repeat="composer in composers.list">
+				{{composer | json}}
+			</li>
+		</ul>
 	</div>
 </div>

@@ -1,8 +1,10 @@
 'use strict';
 
-angular.module('lilybook').controller('ComposersCtrl', function ($modal) {
+angular.module('lilybook').controller('ComposersCtrl', function ($modal, composerSvc) {
 
-	this.open = function() {
+	var that = this;
+
+	that.open = function () {
 		$modal.open({
 			templateUrl: 'views/modals/add-composer.html',
 			size: 'lg',
@@ -11,5 +13,9 @@ angular.module('lilybook').controller('ComposersCtrl', function ($modal) {
 			backdrop: 'static'
 		});
 	};
-	
+
+	composerSvc.getComposers().then(function (composers) {
+		that.list = composers;
+	});
+
 });
