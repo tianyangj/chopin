@@ -54,6 +54,11 @@ angular
           }]
         }
       })
+      .when('/composer/:vanity', {
+        templateUrl: 'views/composer.html',
+        controller: 'ComposerCtrl',
+        controllerAs: 'composer'
+      })
       .otherwise({
         redirectTo: '/'
       });

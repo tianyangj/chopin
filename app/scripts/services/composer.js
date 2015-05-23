@@ -4,7 +4,6 @@
 
 angular.module('lilybook').factory('composerSvc', function ($q) {
 
-  var ref;
   var Composer = Parse.Object.extend('Composer');
 
   var composerMapper = function (composer) {
@@ -20,20 +19,30 @@ angular.module('lilybook').factory('composerSvc', function ($q) {
 
   var createComposer = function (composer) {
     var defer = $q.defer();
-    ref.child(composer.vanity).set(composer, function (error) {
-      if (error) {
+    var newComposer = new Composer();
+    newComposer.set('fullName', composer.fullname);
+    newComposer.set('shortName', composer.shortname);
+    newComposer.set('description', composer.bio);
+    newComposer.set('vanity', composer.vanity);
+    //newComposer.set('image', new Parse.File());
+    newComposer.save().then(function (result) {
+      defer.resolve(composerMapper(result));
+    }, function (error) {
         defer.reject(error);
-      } else {
-        defer.resolve(composer);
-      }
-    });
+      });
     return defer.promise;
   };
 
   var getComposer = function (vanity) {
     var defer = $q.defer();
-    ref.child(vanity).on('value', function (snapshot) {
-      defer.resolve(snapshot.val());
+    var query = new Parse.Query(Composer);
+    query.equalTo('vanity', vanity);
+    query.first().then(function (result) {
+      if (result) {
+        defer.resolve(composerMapper(result));
+      } else {
+        defer.reject('NOT_FOUND');
+      }
     }, function (error) {
         defer.reject(error);
       });
