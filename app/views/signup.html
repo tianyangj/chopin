@@ -2,10 +2,10 @@
 	<div class="page-header">
 		<h1>Signup</h1>
 	</div>
-	<div class="alert alert-danger" role="alert" ng-if="signup.error">
-		<strong>Error!</strong> {{signup.error.message}}
+	<div class="alert alert-danger" role="alert" ng-if="main.error">
+		<strong>Error!</strong> {{main.error.message}}
 	</div>
-	<form class="form-horizontal" ng-submit="signup.submit()">
+	<form class="form-horizontal" ng-submit="main.signup(signup.email, signup.password, signup.firstname, signup.lastname)">
 		<div class="form-group">
 			<div class="col-xs-6">
 				<input type="text" class="form-control" placeholder="First name" required ng-model="signup.firstname">

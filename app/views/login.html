@@ -2,9 +2,9 @@
 	<div class="page-header">
 		<h1>Login</h1>
 	</div>
-	<div class="alert alert-danger" role="alert" ng-if="login.error">
-		<strong>Error!</strong> {{login.error.message}}</div>
-	<form class="form-horizontal" ng-submit="login.submit()">
+	<div class="alert alert-danger" role="alert" ng-if="main.error">
+		<strong>Error!</strong> {{main.error.message}}</div>
+	<form class="form-horizontal" ng-submit="main.login(login.email, login.password)">
 		<div class="form-group">
 			<div class="col-xs-12">
 				<input type="email" class="form-control" placeholder="Email" required ng-model="login.email">

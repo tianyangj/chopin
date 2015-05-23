@@ -30,24 +30,20 @@ angular
         controller: 'AboutCtrl'
       })
       .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl',
-        controllerAs: 'login'
+        templateUrl: 'views/login.html'
       })
       .when('/signup', {
-        templateUrl: 'views/signup.html',
-        controller: 'SignupCtrl',
-        controllerAs: 'signup'
+        templateUrl: 'views/signup.html'
       })
       .when('/home', {
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl',
-        controllerAs: 'home',
+        controllerAs: 'home'/*,
         resolve: {
           auth: ['authSvc', function(authSvc) {
             return authSvc.$requireAuth();
           }]
-        }
+        }*/
       })
       .when('/composers', {
         templateUrl: 'views/composers.html',
