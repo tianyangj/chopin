@@ -1,10 +1,11 @@
-/* global Firebase */
+/* global Parse */
 
 'use strict';
 
 angular.module('lilybook').factory('composerSvc', function ($q) {
 
-  var ref = new Firebase('https://chopin.firebaseio.com/composers');
+  var ref;
+  var Composer = Parse.Object.extend('Composer');
 
   var createComposer = function (composer) {
     var defer = $q.defer();
@@ -40,10 +41,34 @@ angular.module('lilybook').factory('composerSvc', function ($q) {
     return defer.promise;
   };
 
+  var getFeaturedComposers = function () {
+    var defer = $q.defer();
+    var query = new Parse.Query(Composer);
+    query.exists('image');
+    query.ascending('vanity');
+    query.limit(3);
+    query.find().then(function (results) {
+      defer.resolve(results.map(function (r) {
+        return {
+          id: r.id,
+          fullname: r.get('fullName'),
+          shortname: r.get('shortName'),
+          bio: r.get('description'),
+          vanity: r.get('vanity'),
+          image: r.get('image').url()
+        };
+      }));
+    }, function (error) {
+        defer.reject(error);
+      });
+    return defer.promise;
+  };
+
   return {
     createComposer: createComposer,
     getComposer: getComposer,
-    getComposers: getComposers
+    getComposers: getComposers,
+    getFeaturedComposers: getFeaturedComposers
   };
 
 });

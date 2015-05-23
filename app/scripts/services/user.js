@@ -1,5 +1,4 @@
 /* global Parse */
-/* global Firebase */
 
 'use strict';
 
@@ -65,11 +64,16 @@ angular.module('lilybook').factory('userSvc', function ($q) {
     return defer.promise;
   };
 
+  var isAuthenticated = function () {
+    return $q.when(Parse.User.current().authenticated());
+  };
+
   return {
     current: current,
     signUp: signUp,
     logIn: logIn,
-    logOut: logOut
+    logOut: logOut,
+    isAuthenticated: isAuthenticated
   };
 
 });

@@ -1,8 +1,12 @@
+/// <reference path="../../../typings/angularjs/angular.d.ts"/>
+
 'use strict';
 
 angular.module('lilybook').controller('SplashCtrl', function (composerSvc) {
 
-	this.heros = [
+	var self = this;
+
+	self.heros = [
 		{
 			image: 'images/hero1.jpg',
 			headline: 'Example headline.',
@@ -23,8 +27,8 @@ angular.module('lilybook').controller('SplashCtrl', function (composerSvc) {
 		}
 	];
 
-	composerSvc.getComposers(0, 3).then(angular.bind(this, function (composers) {
-		this.composers = composers;
-	}));
+	composerSvc.getFeaturedComposers().then(function (composers) {
+		self.composers = composers;
+	});
 
 });

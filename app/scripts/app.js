@@ -14,7 +14,6 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'firebase',
     'ui.bootstrap'
   ])
   .config(function ($routeProvider, $locationProvider) {

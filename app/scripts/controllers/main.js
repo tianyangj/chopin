@@ -2,35 +2,14 @@
 
 'use strict';
 
-angular.module('lilybook').controller('MainCtrl', function ($rootScope, $location, authSvc, userSvc) {
+angular.module('lilybook').controller('MainCtrl', function ($rootScope, $location, userSvc) {
 
-  var that = this;
   var self = this;
 
   Parse.initialize('fHO4LtJRfsdhQBBicYZpdpj3BQHHQCVEiDPkS4ZI', '3gzRyAZnxtQLn1IofC4Layn6cc487e4n5Jin6FzM');
+
   userSvc.current().then(function (user) {
     $rootScope.user = user;
-  });
-
-  authSvc.$onAuth(function (account) {
-    console.log('$onAuth changed', account);
-    that.account = account;
-    if (account) {
-      userSvc.getUser(account.uid).then(function (user) {
-        that.user = user;
-        $location.path('/home');
-      });
-    } else {
-      that.user = null;
-      $location.path('/');
-    }
-  });
-
-  $rootScope.$on('$routeChangeError', function (event, next, previous, error) {
-    console.log('$routeChangeError', arguments);
-    if (error === 'AUTH_REQUIRED') {
-      $location.path('/login');
-    }
   });
 
   self.signup = function (email, password, firstname, lastname) {
@@ -59,5 +38,12 @@ angular.module('lilybook').controller('MainCtrl', function ($rootScope, $locatio
       $location.path('/');
     });
   };
+
+  $rootScope.$on('$routeChangeError', function (event, next, previous, error) {
+    console.log('$routeChangeError', arguments);
+    if (error === 'AUTH_REQUIRED') {
+      $location.path('/login');
+    }
+  });
 
 });
