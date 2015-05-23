@@ -2,9 +2,9 @@
 
 angular.module('lilybook').controller('ComposersCtrl', function ($modal, composerSvc) {
 
-	var that = this;
+	var self = this;
 
-	that.open = function () {
+	self.open = function () {
 		$modal.open({
 			templateUrl: 'views/modals/add-composer.html',
 			size: 'lg',
@@ -14,8 +14,8 @@ angular.module('lilybook').controller('ComposersCtrl', function ($modal, compose
 		});
 	};
 
-	composerSvc.getComposers().then(function (composers) {
-		that.list = composers;
+	composerSvc.getComposers(0, 20).then(function (composers) {
+		self.list = composers;
 	});
 
 });

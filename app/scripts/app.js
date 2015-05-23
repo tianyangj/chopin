@@ -37,20 +37,20 @@ angular
       .when('/home', {
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl',
-        controllerAs: 'home'/*,
+        controllerAs: 'home',
         resolve: {
-          auth: ['authSvc', function(authSvc) {
-            return authSvc.$requireAuth();
+          auth: ['userSvc', function(userSvc) {
+            return userSvc.isAuthenticated();
           }]
-        }*/
+        }
       })
       .when('/composers', {
         templateUrl: 'views/composers.html',
         controller: 'ComposersCtrl',
         controllerAs: 'composers',
         resolve: {
-          auth: ['authSvc', function(authSvc) {
-            return authSvc.$requireAuth();
+          auth: ['userSvc', function(userSvc) {
+            return userSvc.isAuthenticated();
           }]
         }
       })

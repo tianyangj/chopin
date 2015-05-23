@@ -65,7 +65,12 @@ angular.module('lilybook').factory('userSvc', function ($q) {
   };
 
   var isAuthenticated = function () {
-    return $q.when(Parse.User.current().authenticated());
+    var user = Parse.User.current();
+    if (user && user.authenticated()) {
+      return $q.when(true);
+    } else {
+      return $q.reject('AUTH_REQUIRED');
+    }
   };
 
   return {
