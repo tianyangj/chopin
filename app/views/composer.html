@@ -36,22 +36,16 @@
 							<th>Number (No.)</th>
 							<th>Instrumentation</th>
 							<th>Type</th>
-							<th>RCM</th>
-							<th>ABRSM</th>
-							<th>Henle</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr ng-repeat="composition in composer.compositions">
 							<th scope="row">{{$index + 1}}</th>
-							<td>{{composition.title}}</td>
+							<td><a ng-href="{{::composition.getUrl()}}">{{composition.title}}</a></td>
 							<td>{{composition.opus}}</td>
 							<td>{{composition.number}}</td>
 							<td>{{composition.instrumentation}}</td>
 							<td>{{composition.type}}</td>
-							<td>{{composition.rcm}}</td>
-							<td>{{composition.abrsm}}</td>
-							<td>{{composition.henle}}</td>
 						</tr>
 					</tbody>
 				</table>

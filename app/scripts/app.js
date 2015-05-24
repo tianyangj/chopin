@@ -59,6 +59,11 @@ angular
         controller: 'ComposerCtrl',
         controllerAs: 'composer'
       })
+      .when('/composition/:title/:id', {
+        templateUrl: 'views/composition.html',
+        controller: 'CompositionCtrl',
+        controllerAs: 'composition'
+      })
       .otherwise({
         redirectTo: '/'
       });
