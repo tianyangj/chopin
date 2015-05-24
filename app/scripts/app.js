@@ -16,8 +16,15 @@ angular
     'ngTouch',
     'ui.bootstrap'
   ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider, $locationProvider, $sceDelegateProvider) {
+    
     $locationProvider.html5Mode(true).hashPrefix('!');
+    
+    $sceDelegateProvider.resourceUrlWhitelist([
+      'self',
+      '*://www.youtube.com/**'
+    ]);
+    
     $routeProvider
       .when('/', {
         templateUrl: 'views/splash.html',
