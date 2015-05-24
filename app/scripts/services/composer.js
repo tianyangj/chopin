@@ -8,6 +8,7 @@ angular.module('lilybook').factory('composerSvc', function ($q) {
 
   var composerMapper = function (composer) {
     return {
+      base: composer,
       id: composer.id,
       fullname: composer.get('fullName'),
       shortname: composer.get('shortName'),
