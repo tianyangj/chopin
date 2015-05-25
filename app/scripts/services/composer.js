@@ -80,11 +80,29 @@ angular.module('lilybook').factory('composerSvc', function ($q) {
     return defer.promise;
   };
 
+  var getAllComposers = function () {
+    var defer = $q.defer();
+    var query = new Parse.Query(Composer);
+    query.find().then(function (results) {
+      defer.resolve(results.map(function (result) {
+        return {
+          base: result,
+          id: result.id,
+          fullname: result.get('fullName')
+        };
+      }));
+    }, function (error) {
+        defer.reject(error);
+      });
+    return defer.promise;
+  };
+
   return {
     createComposer: createComposer,
     getComposer: getComposer,
     getComposers: getComposers,
-    getFeaturedComposers: getFeaturedComposers
+    getFeaturedComposers: getFeaturedComposers,
+    getAllComposers: getAllComposers
   };
 
 });

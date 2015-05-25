@@ -1,16 +1,61 @@
 'use strict';
 
-angular.module('lilybook').controller('AdminCompositionCtrl', function ($routeParams, compositionSvc, videoSvc) {
+angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($routeParams, compositionSvc, videoSvc, compositionTypeSvc, keySvc, instrumentationSvc, composerSvc) {
 
 	var self = this;
 
 	compositionSvc.getCompositionById($routeParams.id).then(function (composition) {
+
 		console.log(composition);
 		self.composition = composition;
+
 		videoSvc.getVideosByComposition(composition).then(function (videos) {
-			console.log(videos);
 			self.videos = videos;
 		});
+
+		compositionTypeSvc.getTypes().then(function (types) {
+			self.types = types;
+			types.some(function (type) {
+				if (type.name === composition.type) {
+					self.typeSelected = type;
+					return true;
+				}
+			});
+		});
+
+		keySvc.getKeys().then(function (keys) {
+			self.keys = keys;
+			keys.some(function (key) {
+				if (key.name === composition.key) {
+					self.keySelected = key;
+					return true;
+				}
+			});
+		});
+
+		instrumentationSvc.getInstruments().then(function (instruments) {
+			self.instruments = instruments;
+			instruments.some(function (instrument) {
+				if (instrument.name === composition.instrumentation) {
+					self.instrumentSelected = instrument;
+					return true;
+				}
+			});
+		});
+
+		composerSvc.getAllComposers().then(function (composers) {
+			self.composers = composers;
+			composers.some(function (composer) {
+				if (composer.fullname === composition.composer.fullname) {
+					self.composerSelected = composer;
+					return true;
+				}
+			});
+		});
 	});
+
+	self.submit = function () {
+		console.log(self);
+	};
 
 });

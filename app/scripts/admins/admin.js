@@ -7,15 +7,14 @@ angular.module('lilybook.admin', [
     'ngTouch',
     'ui.bootstrap'
 ]).config(function ($routeProvider) {
-    $routeProvider
-		.when('/admin/composition/:id', {
+    $routeProvider.when('/admin/composition/:id?', {
         templateUrl: 'views/admins/composition.html',
         controller: 'AdminCompositionCtrl',
         controllerAs: 'composition',
         resolve: {
-			auth: ['userSvc', function (userSvc) {
-				return userSvc.isAuthenticated();
-			}]
+            auth: ['userSvc', function (userSvc) {
+                return userSvc.isAuthenticated();
+            }]
         }
-	});
+    });
 });

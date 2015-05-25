@@ -39,10 +39,15 @@ angular.module('lilybook').factory('compositionSvc', function ($q, mapperSvc) {
       });
     return defer.promise;
   };
+  
+  var setComposition = function (composition) {
+    console.log('set', composition);
+  };
 
   return {
     getCompositionsByComposer: getCompositionsByComposer,
-    getCompositionById: getCompositionById
+    getCompositionById: getCompositionById,
+    setComposition: setComposition
   };
 
 });
