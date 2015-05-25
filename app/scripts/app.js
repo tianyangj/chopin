@@ -14,7 +14,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'lilybook.admin'
   ])
   .config(function ($routeProvider, $locationProvider, $sceDelegateProvider) {
     
