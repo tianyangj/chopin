@@ -52,10 +52,46 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 				}
 			});
 		});
-	});
+	}, function (error) {
+			if (error === 'NOT_FOUND') {
+				compositionTypeSvc.getTypes().then(function (types) {
+					self.types = types;
+				});
+				keySvc.getKeys().then(function (keys) {
+					self.keys = keys;
+				});
+				instrumentationSvc.getInstruments().then(function (instruments) {
+					self.instruments = instruments;
+				});
+				composerSvc.getAllComposers().then(function (composers) {
+					self.composers = composers;
+				});
+			}
+		});
 
 	self.submit = function () {
 		console.log(self);
+		var composition = {
+			id: self.composition.id,
+			title: self.composition.title,
+			composer: self.composerSelected,
+			opus: self.composition.opus,
+			number: self.composition.number,
+			type: self.typeSelected,
+			key: self.keySelected,
+			instrumentation: self.instrumentSelected,
+			wikipedia: self.composition.wikipedia,
+			imslp: self.composition.imslp
+		};
+		if (composition.id) {
+			compositionSvc.updateComposition(composition).then(function () {
+				console.log('update suc', arguments);
+			});
+		} else {
+			compositionSvc.createComposition(composition).then(function () {
+				console.log('create suc', arguments);
+			});
+		}
 	};
 
 });

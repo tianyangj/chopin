@@ -1,5 +1,6 @@
 <div class="container">
 	<div class="page-header">
+		<a ng-href="{{composition.getEditUrl()}}" class="btn btn-info pull-right">Edit</a>
 		<h1>{{composition.composition.title}}
 			<p>
 				<small>By
@@ -26,6 +27,20 @@
 					</li>
 					<li class="list-group-item">Instrumentation
 						<span>{{composition.composition.instrumentation}}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Difficulty / Grade Level</div>
+				<ul class="list-group">
+					<li class="list-group-item">ABRSM
+						<span>{{composition.composition.abrsm || 'N/A'}}</span>
+					</li>
+					<li class="list-group-item">RCM
+						<span>{{composition.composition.rcm || 'N/A'}}</span>
+					</li>
+					<li class="list-group-item">Henle
+						<span>{{composition.composition.henle || 'N/A'}}</span>
 					</li>
 				</ul>
 			</div>
