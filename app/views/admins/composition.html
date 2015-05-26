@@ -81,24 +81,6 @@
 			</div>
 		</div>
 		<hr></hr>
-		<div class="form-group" ng-repeat="video in composition.videos">
-			<label class="col-xs-2 control-label">Video {{$index + 1}}</label>
-			<div class="col-xs-10">
-				<input type="text" class="form-control" ng-model="video.title">
-			</div>
-			<div class="col-xs-offset-2 col-xs-10">
-				<input type="text" class="form-control" ng-model="video.embed">
-			</div>
-			<div class="col-xs-offset-2 col-xs-10">
-				<input type="text" class="form-control" ng-model="video.source">
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-xs-offset-2 col-xs-10">
-				<button type="button" class="btn btn-success" ng-click="composition.addVideo()">Add Video</button>
-			</div>
-		</div>
-		<hr></hr>
 		<div class="form-group">
 			<div class="col-xs-offset-2 col-xs-10">
 				<button type="submit" class="btn btn-lg btn-primary">SAVE</button>

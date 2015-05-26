@@ -1,18 +1,11 @@
 'use strict';
 
-angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($routeParams, compositionSvc, videoSvc, composerSvc, definitionSvc) {
+angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($routeParams, compositionSvc, composerSvc, definitionSvc) {
 
 	var self = this;
 
 	compositionSvc.getCompositionById($routeParams.id).then(function (composition) {
-
-		console.log(composition);
 		self.composition = composition;
-
-		videoSvc.getVideosByComposition(composition).then(function (videos) {
-			self.videos = videos;
-		});
-
 		composerSvc.getAllComposers().then(function (composers) {
 			self.composers = composers;
 			composers.some(function (composer) {
@@ -22,7 +15,6 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 				}
 			});
 		});
-
 		definitionSvc.getCompositionTypes().then(function (types) {
 			self.types = types;
 			types.some(function (type) {
@@ -32,7 +24,6 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 				}
 			});
 		});
-
 		definitionSvc.getKeys().then(function (keys) {
 			self.keys = keys;
 			keys.some(function (key) {
@@ -42,7 +33,6 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 				}
 			});
 		});
-
 		definitionSvc.getInstruments().then(function (instruments) {
 			self.instruments = instruments;
 			instruments.some(function (instrument) {
@@ -52,7 +42,6 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 				}
 			});
 		});
-
 		definitionSvc.getRCM().then(function (rcm) {
 			self.rcm = rcm;
 			rcm.some(function (r) {
@@ -62,7 +51,6 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 				}
 			});
 		});
-
 		definitionSvc.getABRSM().then(function (abrsm) {
 			self.abrsm = abrsm;
 			abrsm.some(function (a) {
@@ -72,7 +60,6 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 				}
 			});
 		});
-
 		definitionSvc.getHenle().then(function (henle) {
 			self.henle = henle;
 			henle.some(function (h) {
@@ -109,7 +96,6 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 		});
 
 	self.submit = function () {
-		console.log(self);
 		var composition = {
 			id: self.composition.id,
 			title: self.composition.title,
@@ -126,18 +112,14 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 			imslp: self.composition.imslp
 		};
 		if (composition.id) {
-			compositionSvc.updateComposition(composition).then(function () {
-				console.log('update suc', arguments);
+			compositionSvc.updateComposition(composition).then(function (composition) {
+				self.composition = composition;
 			});
 		} else {
-			compositionSvc.createComposition(composition).then(function () {
-				console.log('create suc', arguments);
+			compositionSvc.createComposition(composition).then(function (composition) {
+				self.composition = composition;
 			});
 		}
-	};
-
-	self.addVideo = function () {
-		console.log('add new videos...');
 	};
 
 });
