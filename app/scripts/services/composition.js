@@ -57,6 +57,9 @@ angular.module('lilybook').factory('compositionSvc', function ($q, mapperSvc) {
       type: composition.type.base,
       wikipedia: composition.wikipedia,
       imslp: composition.imslp,
+      rcm: composition.rcm ? composition.rcm.base : null,
+      abrsm: composition.abrsm ? composition.abrsm.base : null,
+      henle: composition.henle ? composition.henle.base : null,
       composer: composition.composer.base
     }).then(function (result) {
       defer.resolve(mapperSvc.compositionMapper(result));
@@ -81,6 +84,9 @@ angular.module('lilybook').factory('compositionSvc', function ($q, mapperSvc) {
         type: composition.type.base,
         wikipedia: composition.wikipedia,
         imslp: composition.imslp,
+        rcm: composition.rcm ? composition.rcm.base : null,
+        abrsm: composition.abrsm ? composition.abrsm.base : null,
+        henle: composition.henle ? composition.henle.base : null,
         composer: composition.composer.base
       }).then(function (result) {
         defer.resolve(mapperSvc.compositionMapper(result));

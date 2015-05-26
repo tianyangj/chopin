@@ -13,6 +13,16 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 			self.videos = videos;
 		});
 
+		composerSvc.getAllComposers().then(function (composers) {
+			self.composers = composers;
+			composers.some(function (composer) {
+				if (composer.fullname === composition.composer.fullname) {
+					self.composerSelected = composer;
+					return true;
+				}
+			});
+		});
+
 		definitionSvc.getCompositionTypes().then(function (types) {
 			self.types = types;
 			types.some(function (type) {
@@ -43,17 +53,40 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 			});
 		});
 
-		composerSvc.getAllComposers().then(function (composers) {
-			self.composers = composers;
-			composers.some(function (composer) {
-				if (composer.fullname === composition.composer.fullname) {
-					self.composerSelected = composer;
+		definitionSvc.getRCM().then(function (rcm) {
+			self.rcm = rcm;
+			rcm.some(function (r) {
+				if (r.name === composition.rcm) {
+					self.rcmSelected = r;
+					return true;
+				}
+			});
+		});
+
+		definitionSvc.getABRSM().then(function (abrsm) {
+			self.abrsm = abrsm;
+			abrsm.some(function (a) {
+				if (a.name === composition.abrsm) {
+					self.abrsmSelected = a;
+					return true;
+				}
+			});
+		});
+
+		definitionSvc.getHenle().then(function (henle) {
+			self.henle = henle;
+			henle.some(function (h) {
+				if (h.name === composition.henle) {
+					self.henleSelected = h;
 					return true;
 				}
 			});
 		});
 	}, function (error) {
 			if (error === 'NOT_FOUND') {
+				composerSvc.getAllComposers().then(function (composers) {
+					self.composers = composers;
+				});
 				definitionSvc.getCompositionTypes().then(function (types) {
 					self.types = types;
 				});
@@ -63,8 +96,14 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 				definitionSvc.getInstruments().then(function (instruments) {
 					self.instruments = instruments;
 				});
-				composerSvc.getAllComposers().then(function (composers) {
-					self.composers = composers;
+				definitionSvc.getRCM().then(function (rcm) {
+					self.rcm = rcm;
+				});
+				definitionSvc.getABRSM().then(function (abrsm) {
+					self.abrsm = abrsm;
+				});
+				definitionSvc.getHenle().then(function (henle) {
+					self.henle = henle;
 				});
 			}
 		});
@@ -80,6 +119,9 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 			type: self.typeSelected,
 			key: self.keySelected,
 			instrumentation: self.instrumentSelected,
+			rcm: self.rcmSelected,
+			abrsm: self.abrsmSelected,
+			henle: self.henleSelected,
 			wikipedia: self.composition.wikipedia,
 			imslp: self.composition.imslp
 		};
@@ -92,6 +134,10 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 				console.log('create suc', arguments);
 			});
 		}
+	};
+
+	self.addVideo = function () {
+		console.log('add new videos...');
 	};
 
 });
