@@ -58,37 +58,10 @@ angular.module('lilybook').factory('mapperSvc', function () {
     };
   };
 
-  var compositionTypeMapper = function (compositionType) {
-    return {
-      base: compositionType,
-      id: compositionType.id,
-      name: compositionType.get('name')
-    };
-  };
-
-  var keyMapper = function (key) {
-    return {
-      base: key,
-      id: key.id,
-      name: key.get('name')
-    };
-  };
-
-  var instrumentationMapper = function (instrumentation) {
-    return {
-      base: instrumentation,
-      id: instrumentation.id,
-      name: instrumentation.get('name')
-    };
-  };
-
   return {
     compositionMapper: compositionMapper,
     composerMapper: composerMapper,
-    videoMapper: videoMapper,
-    compositionTypeMapper: compositionTypeMapper,
-    keyMapper: keyMapper,
-    instrumentationMapper: instrumentationMapper
+    videoMapper: videoMapper
   };
 
 });

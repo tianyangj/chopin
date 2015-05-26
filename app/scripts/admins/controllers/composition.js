@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($routeParams, compositionSvc, videoSvc, compositionTypeSvc, keySvc, instrumentationSvc, composerSvc) {
+angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($routeParams, compositionSvc, videoSvc, composerSvc, definitionSvc) {
 
 	var self = this;
 
@@ -13,7 +13,7 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 			self.videos = videos;
 		});
 
-		compositionTypeSvc.getTypes().then(function (types) {
+		definitionSvc.getCompositionTypes().then(function (types) {
 			self.types = types;
 			types.some(function (type) {
 				if (type.name === composition.type) {
@@ -23,7 +23,7 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 			});
 		});
 
-		keySvc.getKeys().then(function (keys) {
+		definitionSvc.getKeys().then(function (keys) {
 			self.keys = keys;
 			keys.some(function (key) {
 				if (key.name === composition.key) {
@@ -33,7 +33,7 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 			});
 		});
 
-		instrumentationSvc.getInstruments().then(function (instruments) {
+		definitionSvc.getInstruments().then(function (instruments) {
 			self.instruments = instruments;
 			instruments.some(function (instrument) {
 				if (instrument.name === composition.instrumentation) {
@@ -54,13 +54,13 @@ angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($r
 		});
 	}, function (error) {
 			if (error === 'NOT_FOUND') {
-				compositionTypeSvc.getTypes().then(function (types) {
+				definitionSvc.getCompositionTypes().then(function (types) {
 					self.types = types;
 				});
-				keySvc.getKeys().then(function (keys) {
+				definitionSvc.getKeys().then(function (keys) {
 					self.keys = keys;
 				});
-				instrumentationSvc.getInstruments().then(function (instruments) {
+				definitionSvc.getInstruments().then(function (instruments) {
 					self.instruments = instruments;
 				});
 				composerSvc.getAllComposers().then(function (composers) {
