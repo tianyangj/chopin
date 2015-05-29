@@ -17,14 +17,7 @@ angular
     'ui.bootstrap',
     'lilybook.admin'
   ])
-  .config(function ($routeProvider, $locationProvider, $sceDelegateProvider) {
-    
-    $locationProvider.html5Mode(true).hashPrefix('!');
-    
-    $sceDelegateProvider.resourceUrlWhitelist([
-      'self',
-      '*://www.youtube.com/**'
-    ]);
+  .config(function ($routeProvider) {
     
     $routeProvider
       .when('/', {
