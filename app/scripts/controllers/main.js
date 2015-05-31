@@ -2,7 +2,7 @@
 
 'use strict';
 
-angular.module('lilybook').controller('MainCtrl', function ($rootScope, $location, userSvc) {
+angular.module('lilybook').controller('MainCtrl', function ($rootScope, $state, userSvc) {
 
   var self = this;
 
@@ -16,7 +16,7 @@ angular.module('lilybook').controller('MainCtrl', function ($rootScope, $locatio
     userSvc.signUp(email, password, firstname, lastname).then(function (user) {
       self.error = null;
       $rootScope.user = user;
-      $location.path('/home');
+      $state.go('app.home');
     }, function (error) {
         self.error = error;
       });
@@ -26,7 +26,7 @@ angular.module('lilybook').controller('MainCtrl', function ($rootScope, $locatio
     userSvc.logIn(email, password).then(function (user) {
       self.error = null;
       $rootScope.user = user;
-      $location.path('/home');
+      $state.go('app.home');
     }, function (error) {
         self.error = error;
       });
@@ -35,14 +35,14 @@ angular.module('lilybook').controller('MainCtrl', function ($rootScope, $locatio
   self.logout = function () {
     userSvc.logOut().then(function () {
       $rootScope.user = null;
-      $location.path('/');
+      $state.go('app.splash');
     });
   };
 
-  $rootScope.$on('$routeChangeError', function (event, next, previous, error) {
-    console.log('$routeChangeError', arguments);
+  $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+    console.log('$stateChangeError', arguments, error);
     if (error === 'AUTH_REQUIRED') {
-      $location.path('/login');
+      $state.go('app.login');
     }
   });
 

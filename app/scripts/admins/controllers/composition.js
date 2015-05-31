@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('lilybook.admin').controller('AdminCompositionCtrl', function ($routeParams, compositionSvc, composerSvc, definitionSvc) {
+angular.module('lilybook').controller('AdminCompositionCtrl', function ($stateParams, compositionSvc, composerSvc, definitionSvc) {
 
 	var self = this;
 
-	compositionSvc.getCompositionById($routeParams.id).then(function (composition) {
+	compositionSvc.getCompositionById($stateParams.id).then(function (composition) {
 		self.composition = composition;
 		composerSvc.getAllComposers().then(function (composers) {
 			self.composers = composers;

@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('lilybook').controller('CompositionCtrl', function ($routeParams, compositionSvc, videoSvc) {
+angular.module('lilybook').controller('CompositionCtrl', function ($stateParams, compositionSvc, videoSvc) {
 
 	var self = this;
 
-	compositionSvc.getCompositionById($routeParams.id).then(function (composition) {
+	compositionSvc.getCompositionById($stateParams.id).then(function (composition) {
 		console.log(composition);
 		self.composition = composition;
 		self.getEditUrl = function () {
