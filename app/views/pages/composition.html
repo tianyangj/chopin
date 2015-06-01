@@ -2,12 +2,11 @@
 	<div class="page-header m-l-md m-r-md">
 		<a ng-href="{{composition.getEditUrl()}}" class="btn btn-info pull-right">Edit</a>
 		<h1>{{composition.composition.title}}
-			<p>
-				<small>By
-					<a ng-href="{{composition.composition.composer.getUrl()}}">{{composition.composition.composer.fullname}}</a>
-				</small>
-			</p>
+			<a class="btn btn-icon btn-rounded btn-info m-l-md"><i class="fa fa-play"></i></a>
 		</h1>
+		<h4>By
+			<a ng-href="{{composition.composition.composer.getUrl()}}">{{composition.composition.composer.fullname}}</a>
+		</h4>
 	</div>
 	<div class="row">
 		<div class="col-xs-3">
