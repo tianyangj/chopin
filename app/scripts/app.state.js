@@ -46,7 +46,7 @@ angular.module('lilybook').config(function ($stateProvider, $urlRouterProvider) 
  	})
    	.state('app.composer', {
 		url: '/composer/:vanity',
-        templateUrl: 'views/composer.html',
+        templateUrl: 'views/pages/composer.html',
         controller: 'ComposerCtrl',
         controllerAs: 'composer'
   	})
