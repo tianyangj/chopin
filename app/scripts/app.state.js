@@ -52,7 +52,7 @@ angular.module('lilybook').config(function ($stateProvider, $urlRouterProvider) 
   	})
    	.state('app.composition', {
 		url: '/composition/:title/:id',
-        templateUrl: 'views/composition.html',
+        templateUrl: 'views/pages/composition.html',
         controller: 'CompositionCtrl',
         controllerAs: 'composition'
     });
