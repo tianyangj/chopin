@@ -29,40 +29,26 @@ angular.module('lilybook').config(function ($stateProvider) {
     })
     .state('admin.composition.detail', {
         url: '',
-        templateUrl: 'views/admins/composition-detail.html',
-        controller: 'AdminCompositionDetailCtrl',
-        controllerAs: 'detail',
         resolve: {
             composition: ['composition', function (composition) {
                 return composition;
             }]
-        }
-    })
-    .state('admin.composition.video', {
+        },
         views: {
+            'detail': {
+                templateUrl: 'views/admins/composition-detail.html',
+                controller: 'AdminCompositionDetailCtrl',
+                controllerAs: 'detail'
+            },
             'video': {
                 templateUrl: 'views/admins/composition-video.html',
                 controller: 'AdminCompositionVideoCtrl',
-                controllerAs: 'video',
-                resolve: {
-                    composition: ['composition', function (composition) {
-                        return composition;
-                    }]
-                }
-            }
-        }
-    })
-    .state('admin.composition.sheet', {
-        views: {
+                controllerAs: 'video'
+            },
             'sheet': {
                 templateUrl: 'views/admins/composition-sheet.html',
                 controller: 'AdminCompositionSheetCtrl',
-                controllerAs: 'sheet',
-                resolve: {
-                    composition: ['composition', function (composition) {
-                        return composition;
-                    }]
-                }
+                controllerAs: 'sheet'
             }
         }
     });

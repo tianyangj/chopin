@@ -1,16 +1,13 @@
 <div class="container">
-	<div class="page-header">
-		<a ng-href="{{composition.composition.getUrl()}}" class="btn btn-info pull-right">View</a>
-		<h1>Composition</h1>
-	</div>
+	<h1>Composition Editor</h1>
 	<tabset>
-		<tab heading="Details" ui-sref="admin.composition.detail">
-			<div ui-view></div>
+		<tab heading="Details">
+			<div ui-view="detail"></div>
 		</tab>
-		<tab heading="Videos" ui-sref="admin.composition.video">
+		<tab heading="Videos">
 			<div ui-view="video"></div>
 		</tab>
-		<tab heading="Sheets" ui-sref="admin.composition.sheet">
+		<tab heading="Sheets">
 			<div ui-view="sheet"></div>
 		</tab>
 	</tabset>
