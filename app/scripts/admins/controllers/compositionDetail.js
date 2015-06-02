@@ -1,99 +1,94 @@
 'use strict';
 
-angular.module('lilybook').controller('AdminCompositionCtrl', function ($stateParams, compositionSvc, composerSvc, definitionSvc) {
+angular.module('lilybook').controller('AdminCompositionDetailCtrl', function (composition, compositionSvc, composerSvc, definitionSvc) {
 
 	var self = this;
 
-	compositionSvc.getCompositionById($stateParams.id).then(function (composition) {
-		self.composition = composition;
-		composerSvc.getAllComposers().then(function (composers) {
-			self.composers = composers;
+	self.composition = composition;
+
+	composerSvc.getAllComposers().then(function (composers) {
+		self.composers = composers;
+		if (composition) {
 			composers.some(function (composer) {
 				if (composer.fullname === composition.composer.fullname) {
 					self.composerSelected = composer;
 					return true;
 				}
 			});
-		});
-		definitionSvc.getCompositionTypes().then(function (types) {
-			self.types = types;
+		}
+	});
+
+	definitionSvc.getCompositionTypes().then(function (types) {
+		self.types = types;
+		if (composition) {
 			types.some(function (type) {
 				if (type.name === composition.type) {
 					self.typeSelected = type;
 					return true;
 				}
 			});
-		});
-		definitionSvc.getKeys().then(function (keys) {
-			self.keys = keys;
+		}
+	});
+
+	definitionSvc.getKeys().then(function (keys) {
+		self.keys = keys;
+		if (composition) {
 			keys.some(function (key) {
 				if (key.name === composition.key) {
 					self.keySelected = key;
 					return true;
 				}
 			});
-		});
-		definitionSvc.getInstruments().then(function (instruments) {
-			self.instruments = instruments;
+		}
+	});
+
+	definitionSvc.getInstruments().then(function (instruments) {
+		self.instruments = instruments;
+		if (composition) {
 			instruments.some(function (instrument) {
 				if (instrument.name === composition.instrumentation) {
 					self.instrumentSelected = instrument;
 					return true;
 				}
 			});
-		});
-		definitionSvc.getRCM().then(function (rcm) {
-			self.rcm = rcm;
+		}
+	});
+
+	definitionSvc.getRCM().then(function (rcm) {
+		self.rcm = rcm;
+		if (composition) {
 			rcm.some(function (r) {
 				if (r.name === composition.rcm) {
 					self.rcmSelected = r;
 					return true;
 				}
 			});
-		});
-		definitionSvc.getABRSM().then(function (abrsm) {
-			self.abrsm = abrsm;
+		}
+	});
+
+	definitionSvc.getABRSM().then(function (abrsm) {
+		self.abrsm = abrsm;
+		if (composition) {
 			abrsm.some(function (a) {
 				if (a.name === composition.abrsm) {
 					self.abrsmSelected = a;
 					return true;
 				}
 			});
-		});
-		definitionSvc.getHenle().then(function (henle) {
-			self.henle = henle;
+		}
+	});
+
+	definitionSvc.getHenle().then(function (henle) {
+		self.henle = henle;
+		if (composition) {
 			henle.some(function (h) {
 				if (h.name === composition.henle) {
 					self.henleSelected = h;
 					return true;
 				}
 			});
-		});
-	}, function (error) {
-			if (error === 'NOT_FOUND') {
-				composerSvc.getAllComposers().then(function (composers) {
-					self.composers = composers;
-				});
-				definitionSvc.getCompositionTypes().then(function (types) {
-					self.types = types;
-				});
-				definitionSvc.getKeys().then(function (keys) {
-					self.keys = keys;
-				});
-				definitionSvc.getInstruments().then(function (instruments) {
-					self.instruments = instruments;
-				});
-				definitionSvc.getRCM().then(function (rcm) {
-					self.rcm = rcm;
-				});
-				definitionSvc.getABRSM().then(function (abrsm) {
-					self.abrsm = abrsm;
-				});
-				definitionSvc.getHenle().then(function (henle) {
-					self.henle = henle;
-				});
-			}
-		});
+		}
+	});
 
 	self.submit = function () {
 		var composition = {
