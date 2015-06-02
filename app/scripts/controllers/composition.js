@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lilybook').controller('CompositionCtrl', function ($stateParams, compositionSvc, videoSvc) {
+angular.module('lilybook').controller('CompositionCtrl', function ($stateParams, youtubeEmbedUtils, compositionSvc, videoSvc) {
 
 	var self = this;
 
@@ -11,7 +11,9 @@ angular.module('lilybook').controller('CompositionCtrl', function ($stateParams,
 			return '/admin/composition/' + composition.id;
 		};
 		videoSvc.getVideosByComposition(composition).then(function (videos) {
-			console.log(videos);
+			videos.forEach(function (video) {
+				video.vid = youtubeEmbedUtils.getIdFromURL(video.embed);
+			});
 			self.videos = videos;
 		});
 	});

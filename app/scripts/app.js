@@ -8,5 +8,6 @@ angular.module('lilybook', [
   'ngTouch',
   'ui.bootstrap',
   'ui.router',
-  'ui.utils'
+  'ui.utils',
+  'youtube-embed'
 ]);
