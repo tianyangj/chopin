@@ -9,5 +9,6 @@ angular.module('lilybook', [
   'ui.bootstrap',
   'ui.router',
   'ui.utils',
+  'xeditable',
   'youtube-embed'
 ]);
