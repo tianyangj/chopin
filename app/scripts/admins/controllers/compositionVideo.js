@@ -6,9 +6,11 @@ angular.module('lilybook').controller('AdminCompositionVideoCtrl', function (com
 
 	self.composition = composition;
 
-	videoSvc.getVideosByComposition(composition).then(function (videos) {
-		self.videos = videos;
-	});
+	if (composition) {
+		videoSvc.getVideosByComposition(composition).then(function (videos) {
+			self.videos = videos;
+		});
+	}
 
 	self.save = function (video) {
 		video.composition = composition;
