@@ -1,13 +1,7 @@
-.signup-container {
-	max-width: 400px;
-	margin: 0 auto;
-}
-
-.login-container {
-	max-width: 400px;
-	margin: 0 auto;
-}
-
 .splash-container .carousel .item {
 	height: 500px;
+}
+
+pdf-viewer canvas {
+	width: 100%;
 }

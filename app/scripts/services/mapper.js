@@ -57,11 +57,22 @@ angular.module('lilybook').factory('mapperSvc', function () {
       title: video.get('title')
     };
   };
+  
+  var sheetMapper = function (sheet) {
+    return {
+      base: sheet,
+      id: sheet.id,
+      firstPage: sheet.get('firstPage'),
+      lastPage: sheet.get('lastPage'),
+      pdfUrl: sheet.get('pdf') ? sheet.get('pdf').url() : null
+    };
+  };
 
   return {
     compositionMapper: compositionMapper,
     composerMapper: composerMapper,
-    videoMapper: videoMapper
+    videoMapper: videoMapper,
+    sheetMapper: sheetMapper
   };
 
 });

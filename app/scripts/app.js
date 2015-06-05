@@ -6,6 +6,7 @@ angular.module('lilybook', [
   'ngMaterial',
   'ngSanitize',
   'ngTouch',
+  'pdf',
   'ui.bootstrap',
   'ui.router',
   'ui.utils',
