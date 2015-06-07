@@ -182,6 +182,7 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
+        exclude: ['bower_components/pdfjs-dist/build/pdf.worker.js'],
         ignorePath:  /\.\.\//
       },
       test: {
@@ -363,6 +364,9 @@ module.exports = function (grunt) {
           cwd: 'bower_components/font-awesome',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
+        }, {
+          src: 'bower_components/pdfjs-dist/build/pdf.worker.js',
+          dest: '<%= yeoman.dist %>/bower_components/pdfjs-dist/build/pdf.worker.js',
         }]
       },
       styles: {
