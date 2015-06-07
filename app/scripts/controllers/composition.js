@@ -12,6 +12,7 @@ angular.module('lilybook').controller('CompositionCtrl', function ($stateParams,
 		videoSvc.getVideosByComposition(composition).then(function (videos) {
 			videos.forEach(function (video) {
 				video.vid = youtubeEmbedUtils.getIdFromURL(video.embed);
+				video.thumbnail = 'https://img.youtube.com/vi/' + video.vid + '/hqdefault.jpg';
 			});
 			self.videos = videos;
 		});
