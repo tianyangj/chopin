@@ -22,55 +22,26 @@ angular.module('lilybook').factory('sheetSvc', function ($q, mapperSvc) {
 		return defer.promise;
 	};
 
-	/*var createVideo = function (video) {
+	var updateSheet = function (sheet) {
 		var defer = $q.defer();
-		var _video = new Video();
-		_video.save({
-			title: video.title,
-			embed: video.embed,
-			composition: video.composition.base
-		}).then(function (result) {
-			defer.resolve(mapperSvc.videoMapper(result));
-		}, function (error) {
-				defer.reject(error);
-			});
-		return defer.promise;
-	};
-
-	var updateVideo = function (video) {
-		var defer = $q.defer();
-		var query = new Parse.Query(Video);
-		query.equalTo('objectId', video.id);
-		query.first().then(function (_video) {
-			_video.save({
-				title: video.title,
-				embed: video.embed,
-				composition: video.composition.base
+		var query = new Parse.Query(Sheet);
+		query.equalTo('objectId', sheet.id);
+		query.first().then(function (_sheet) {
+			_sheet.save({
+				firstPage: sheet.firstPage,
+				lastPage: sheet.lastPage
 			}).then(function (result) {
-				defer.resolve(mapperSvc.videoMapper(result));
+				defer.resolve(mapperSvc.sheetMapper(result));
 			});
 		}, function (error) {
 				defer.reject(error);
 			});
 		return defer.promise;
 	};
-
-	var deleteVideo = function (video) {
-		var defer = $q.defer();
-		var query = new Parse.Query(Video);
-		query.equalTo('objectId', video.id);
-		query.first().then(function (_video) {
-			_video.destroy().then(function (result) {
-				defer.resolve(result.id);
-			});
-		}, function (error) {
-				defer.reject(error);
-			});
-		return defer.promise;
-	};*/
 
 	return {
-		getSheetByComposition: getSheetByComposition
+		getSheetByComposition: getSheetByComposition,
+		updateSheet: updateSheet
 	};
 
 });

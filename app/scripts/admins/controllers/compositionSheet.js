@@ -1,15 +1,19 @@
 'use strict';
 
-angular.module('lilybook').controller('AdminCompositionSheetCtrl', function (composition) {
+angular.module('lilybook').controller('AdminCompositionSheetCtrl', function (composition, sheetSvc) {
 
 	var self = this;
 
 	self.composition = composition;
 
-	console.log('AdminCompositionSheetCtrl', self);
+	if (composition) {
+		sheetSvc.getSheetByComposition(composition).then(function (sheet) {
+			self.sheet = sheet;
+		});
+	}
 
-	self.submit = function () {
-		console.log('sheet submit...');
+	self.save = function (sheet) {
+		sheetSvc.updateSheet(sheet);
 	};
 
 });
