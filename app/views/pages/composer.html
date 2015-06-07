@@ -48,7 +48,7 @@
 					<tr ng-repeat="composition in composer.compositions">
 						<th scope="row">{{$index + 1}}</th>
 						<td>
-							<a ng-href="{{::composition.getUrl()}}">{{composition.title}}</a>
+							<a ui-sref="app.composition({vanity:composition.vanity,id:composition.id})">{{composition.title}}</a>
 						</td>
 						<td>{{composition.opus}}</td>
 						<td>{{composition.number}}</td>

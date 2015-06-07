@@ -14,10 +14,7 @@ angular.module('lilybook').factory('composerSvc', function ($q) {
       shortname: composer.get('shortName'),
       bio: composer.get('description'),
       vanity: composer.get('vanity'),
-      image: composer.get('image') ? composer.get('image').url() : '',
-      getUrl: function () {
-        return 'composer/' + this.vanity;
-      }
+      image: composer.get('image') ? composer.get('image').url() : ''
     };
   };
 

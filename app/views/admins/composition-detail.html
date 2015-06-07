@@ -79,7 +79,7 @@
 	<div class="form-group">
 		<div class="col-xs-offset-2 col-xs-10">
 			<button type="submit" class="btn btn-lg btn-primary">SAVE</button>
-			<a ng-href="{{detail.composition.getUrl()}}" class="btn btn-lg btn-info">View</a>
+			<a ui-sref="app.composition({vanity:detail.composition.vanity,id:detail.composition.id})" class="btn btn-lg btn-info">View</a>
 		</div>
 	</div>
 </form>

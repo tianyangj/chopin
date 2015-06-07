@@ -51,7 +51,7 @@ angular.module('lilybook').config(function ($stateProvider, $urlRouterProvider) 
         controllerAs: 'composer'
   	})
    	.state('app.composition', {
-		url: '/composition/:title/:id',
+		url: '/composition/:vanity/:id',
         templateUrl: 'views/pages/composition.html',
         controller: 'CompositionCtrl',
         controllerAs: 'composition'

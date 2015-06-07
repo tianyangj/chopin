@@ -6,6 +6,15 @@ angular.module('lilybook').factory('compositionSvc', function ($q, mapperSvc) {
 
   var Composition = Parse.Object.extend('Composition');
 
+  var buildVanity = function (title) {
+    var url = title.split(' ').join('_');
+    url = url.replace(/,/g, '');
+    url = url.replace(/\./g, '');
+    url = url.replace(/♯/g, '_sharp');
+    url = url.replace(/♭/g, '_flat');
+    return url.toLowerCase();
+  };
+
   var getCompositionsByComposer = function (composer) {
     var defer = $q.defer();
     var query = new Parse.Query(Composition);
@@ -50,6 +59,7 @@ angular.module('lilybook').factory('compositionSvc', function ($q, mapperSvc) {
     var _composition = new Composition();
     _composition.save({
       title: composition.title,
+      vanity: buildVanity(composition.title),
       opus: composition.opus,
       number: composition.number,
       key: composition.key.base,
@@ -77,6 +87,7 @@ angular.module('lilybook').factory('compositionSvc', function ($q, mapperSvc) {
     query.first().then(function (_composition) {
       _composition.save({
         title: composition.title,
+        vanity: buildVanity(composition.title),
         opus: composition.opus,
         number: composition.number,
         key: composition.key.base,

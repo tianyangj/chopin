@@ -1,3 +1,5 @@
+/* global PDFJS */
+
 'use strict';
 
 (function () {

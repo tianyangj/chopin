@@ -1,11 +1,11 @@
 <div class="container-fluid">
 	<div class="page-header m-l-md m-r-md">
-		<a ng-href="{{composition.getEditUrl()}}" class="btn btn-info pull-right">Edit</a>
+		<a ui-sref="admin.composition.detail({id:composition.composition.id})" class="btn btn-info pull-right">Edit</a>
 		<h1>{{composition.composition.title}}
 			<a class="btn btn-icon btn-rounded btn-info m-l-md"><i class="fa fa-play"></i></a>
 		</h1>
 		<h4>By
-			<a ng-href="{{composition.composition.composer.getUrl()}}">{{composition.composition.composer.fullname}}</a>
+			<a ui-sref="app.composer({vanity:composition.composition.composer.vanity})">{{composition.composition.composer.fullname}}</a>
 		</h4>
 	</div>
 	<div class="row">
@@ -21,7 +21,7 @@
 								<strong>Composer</strong>
 							</td>
 							<td>
-								<a ng-href="{{composition.composition.composer.getUrl()}}">{{composition.composition.composer.fullname}}</a>
+								<a ui-sref="app.composer({vanity:composition.composition.composer.vanity})">{{composition.composition.composer.fullname}}</a>
 							</td>
 						</tr>
 						<tr>

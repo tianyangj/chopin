@@ -24,7 +24,7 @@
 	<div class="form-group">
 		<div class="col-xs-offset-2 col-xs-10">
 			<button type="button" class="btn btn-lg btn-primary" ng-click="sheet.save(sheet.sheet)">SAVE</button>
-			<a ng-href="{{sheet.composition.getUrl()}}" class="btn btn-lg btn-info">View</a>
+			<a ui-sref="app.composition({vanity:sheet.composition.vanity,id:sheet.composition.id})" class="btn btn-lg btn-info">View</a>
 		</div>
 	</div>
 </form>

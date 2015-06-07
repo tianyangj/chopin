@@ -13,6 +13,6 @@
 	<hr></hr>
 	<div class="m-b-lg">
 		<button type="button" class="btn btn-lg btn-success" ng-click="video.add()">Add New</button>
-		<a ng-href="{{video.composition.getUrl()}}" class="btn btn-lg btn-info">View</a>
+		<a  ui-sref="app.composition({vanity:video.composition.vanity,id:video.composition.id})" class="btn btn-lg btn-info">View</a>
 	</div>
 </div>

@@ -17,7 +17,7 @@
         <h2>{{composer.fullname}}</h2>
         <p>{{composer.bio}}</p>
         <p>
-          <a class="btn btn-default" ng-href="{{composer.getUrl()}}">View details »</a>
+          <a class="btn btn-default" ui-sref="app.composer({vanity:composer.vanity})">View details »</a>
         </p>
       </div>
     </div>

@@ -2,20 +2,12 @@
 
 angular.module('lilybook').factory('mapperSvc', function () {
 
-  var buildCleanUrl = function (title) {
-    var url = title.split(' ').join('_');
-    url = url.replace(/,/g, '');
-    url = url.replace(/\./g, '');
-    url = url.replace(/♯/g, '_sharp');
-    url = url.replace(/♭/g, '_flat');
-    return url.toLowerCase();
-  };
-
   var compositionMapper = function (composition) {
     return {
       base: composition,
       id: composition.id,
       title: composition.get('title'),
+      vanity: composition.get('vanity'),
       opus: composition.get('opus'),
       number: composition.get('number'),
       key: composition.get('key').get('name'),
@@ -26,10 +18,7 @@ angular.module('lilybook').factory('mapperSvc', function () {
       composer: composition.get('composer') ? composerMapper(composition.get('composer')) : null,
       rcm: composition.get('rcm') ? composition.get('rcm').get('name') : null,
       abrsm: composition.get('abrsm') ? composition.get('abrsm').get('name') : null,
-      henle: composition.get('henle') ? composition.get('henle').get('name') : null,
-      getUrl: function () {
-        return 'composition/' + buildCleanUrl(this.title) + '/' + this.id;
-      }
+      henle: composition.get('henle') ? composition.get('henle').get('name') : null
     };
   };
 
@@ -41,10 +30,7 @@ angular.module('lilybook').factory('mapperSvc', function () {
       shortname: composer.get('shortName'),
       bio: composer.get('description'),
       vanity: composer.get('vanity'),
-      image: composer.get('image') ? composer.get('image').url() : null,
-      getUrl: function () {
-        return 'composer/' + this.vanity;
-      }
+      image: composer.get('image') ? composer.get('image').url() : null
     };
   };
 
@@ -57,7 +43,7 @@ angular.module('lilybook').factory('mapperSvc', function () {
       title: video.get('title')
     };
   };
-  
+
   var sheetMapper = function (sheet) {
     return {
       base: sheet,
