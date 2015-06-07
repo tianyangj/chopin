@@ -11,7 +11,7 @@ angular.module('lilybook').controller('SplashCtrl', function (composerSvc) {
 			image: 'images/hero1.jpg',
 			headline: 'Example headline.',
 			text: 'Note: If you\'re viewing this page via a file:// URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.',
-			action: '<a class="btn btn-lg btn-primary" href="/signup">Sign up today</a>'
+			action: '<a class="btn btn-lg btn-primary" href="/#!/signup">Sign up today</a>'
 		},
 		{
 			image: 'images/hero2.jpg',

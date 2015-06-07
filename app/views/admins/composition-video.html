@@ -4,10 +4,10 @@
 			<button type="button" class="m-l-lg btn btn-sm btn-danger" ng-click="video.remove(vid)">Remove</button>
 		</h4>
 		<div>Title:
-			<a href="#" editable-text="vid.title" e-style="width: 600px" onaftersave="video.save(vid)">{{ vid.title || 'empty' }}</a>
+			<a editable-text="vid.title" e-style="width: 600px" onaftersave="video.save(vid)">{{ vid.title || 'empty' }}</a>
 		</div>
 		<div>Link:
-			<a href="#" editable-url="vid.embed" e-style="width: 600px" onaftersave="video.save(vid)">{{ vid.embed || 'empty' }}</a>
+			<a editable-url="vid.embed" e-style="width: 600px" onaftersave="video.save(vid)">{{ vid.embed || 'empty' }}</a>
 		</div>
 	</div>
 	<hr></hr>
