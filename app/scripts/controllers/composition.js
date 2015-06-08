@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lilybook').controller('CompositionCtrl', function ($stateParams, youtubeEmbedUtils, pdfDelegate, compositionSvc, videoSvc, sheetSvc) {
+angular.module('lilybook').controller('CompositionCtrl', function ($stateParams, $modal, youtubeEmbedUtils, pdfDelegate, compositionSvc, videoSvc, sheetSvc) {
 
 	var self = this;
 
@@ -25,6 +25,15 @@ angular.module('lilybook').controller('CompositionCtrl', function ($stateParams,
 
 	self.pageChanged = function () {
 		pdfDelegate.$getByHandle('sheetMusic').goToPage(self.basePage + self.currentPage);
+	};
+
+	self.play = function (video) {
+		$modal.open({
+			templateUrl: 'views/modals/video-player.html',
+			controller: function ($scope) {
+				$scope.video = video;
+			}
+		});
 	};
 
 });

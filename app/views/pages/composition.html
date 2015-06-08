@@ -106,36 +106,12 @@
 			<h3 class="font-thin m-b m-t-none">Performances</h3>
 			<div class="row">
 				<div class="col-xs-12 col-sm-4" ng-repeat="video in composition.videos">
-					<div class="item">
-						<div class="b-a bg-white wrapper-xs">
-							<div class="embed-responsive embed-responsive-4by3">
-								<youtube-video class="embed-responsive-item" video-url="video.embed" player-vars="{showinfo:0,modestbranding:1}"></youtube-video>
-							</div>
-						</div>
-						<div class="padder-v">
-							<p class="text-ellipsis">{{video.title}}</p>
-						</div>
-					</div>
-					<!--<div class="thumbnail">
+					<div class="thumbnail" ng-click="composition.play(video)">
 						<img ng-src="{{video.thumbnail}}" />
 						<div class="caption">
 							<p class="text-ellipsis m-n">{{video.title}}</p>
 						</div>
-					</div>-->
-					<!--<div class="item">
-						<div class="pos-rlt b-a bg-white wrapper-xs">
-							<div class="center text-center m-t-n w-full">
-								<i class="fa fa-play-circle fa-2x text-white"></i>
-							</div>
-							<div class="top">
-								<span class="badge bg-dark m-l-sm m-t-sm">02:10</span>
-							</div>
-							<img  ng-src="{{video.thumbnail}}" class="img-full">
-						</div>
-						<div class="padder-v">
-							<a class="text-ellipsis">{{video.title}}</a>
-						</div>
-					</div>-->
+					</div>
 				</div>
 			</div>
 			<h3 class="font-thin m-b m-t-none">Sheet Music</h3>
