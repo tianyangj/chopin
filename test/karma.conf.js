@@ -35,6 +35,7 @@ module.exports = function(config) {
       'bower_components/pdfjs-dist/build/pdf.js',
       'bower_components/pdfjs-dist/build/pdf.worker.js',
       'bower_components/angular-pdf-viewer/dist/angular-pdf-viewer.min.js',
+      'bower_components/angular-ui-grid/ui-grid.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-ui-utils/ui-utils.js',
       'bower_components/angular-xeditable/dist/js/xeditable.js',

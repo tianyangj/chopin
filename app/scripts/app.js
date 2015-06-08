@@ -14,6 +14,7 @@ angular.module('lilybook', [
   'ngTouch',
   'pdf',
   'ui.bootstrap',
+  'ui.grid',
   'ui.router',
   'ui.utils',
   'xeditable',

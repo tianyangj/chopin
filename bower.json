@@ -12,6 +12,7 @@
     "angular-bootstrap": "0.13.0",
     "angular-material": "0.9.6",
     "angular-pdf-viewer": "tianyangj/angular-pdf-viewer#master",
+    "angular-ui-grid": "v3.0.0-rc.21",
     "angular-ui-router": "0.2.15",
     "angular-ui-utils": "0.2.3",
     "angular-xeditable": "0.1.9",
